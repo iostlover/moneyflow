@@ -1,0 +1,264 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.app-header {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-bottom: 2px solid #ff6b6b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.app-header p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    height: calc(100vh - 66px);
+    /* Header height approx */
+}
+
+.left-sidebar {
+    width: 380px;
+    background: #181818;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.graph-container {
+    flex: 1;
+    position: relative;
+    background: #1e1e1e;
+}
+
+/* Macro Panel Styles */
+.macro-panel {
+    padding: 1.5rem;
+    color: #e0e0e0;
+}
+
+.macro-panel h2 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+
+.macro-panel .subtitle {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.budget-section {
+    margin-bottom: 1.5rem;
+}
+
+.budget-section h3 {
+    color: #4ecdc4;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #4ecdc4;
+    padding-left: 10px;
+}
+
+.budget-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.budget-card.total {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(30, 60, 114, 0.4) 100%);
+    border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.budget-card .label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.budget-card .value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.budget-card.total .value {
+    color: #ffeb3b;
+    font-size: 1.4rem;
+}
+
+.budget-sub-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.5rem 0.4rem 1.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    border-bottom: 1px dotted #333;
+}
+
+.budget-sub-item:last-child {
+    border-bottom: none;
+}
+
+.highlight-red {
+    color: #ff8a80;
+    font-weight: 500;
+}
+
+.highlight-yellow {
+    color: #ffd54f;
+    font-weight: 500;
+}
+
+.note {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.macro-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+/* Info Panel Styles */
+.info-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    max-height: calc(100vh - 160px);
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    color: #fff;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.info-panel h2 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.75rem;
+}
+
+.node-type {
+    font-size: 0.85rem;
+    color: #bbb;
+    margin-top: 0;
+}
+
+.info-panel h3 {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    color: #4ecdc4;
+    margin-bottom: 0.75rem;
+}
+
+.transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transaction-list li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 4px solid #888;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.transaction-list li:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.transaction-list li.outgoing {
+    border-left-color: #ff6b6b;
+    /* Red indicating sending money */
+}
+
+.transaction-list li.incoming {
+    border-left-color: #4ecdc4;
+    /* Green indicating receiving money */
+}
+
+.tx-direction {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+    color: #ccc;
+}
+
+.tx-amount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    letter-spacing: 1px;
+}
+
+.tx-label {
+    font-size: 0.85rem;
+    color: #aaa;
+}

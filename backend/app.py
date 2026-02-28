@@ -14,6 +14,24 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+COUNTER_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'visitor_count.json')
+
+def load_count():
+    if not os.path.exists(COUNTER_FILE):
+        return 0
+    with open(COUNTER_FILE, 'r') as f:
+        return json.load(f).get('count', 0)
+
+def save_count(count):
+    with open(COUNTER_FILE, 'w') as f:
+        json.dump({'count': count}, f)
+
+@app.get("/api/visitor-count")
+def get_visitor_count():
+    count = load_count() + 1
+    save_count(count)
+    return {"count": count}
+
 @app.get("/api/graph-data")
 def get_graph_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
